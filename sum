@@ -1,0 +1,12 @@
+
+def sumforN(number):
+    str001=""
+    sum=0
+    result=""
+    for i in range(1, number+1):
+        str001= str(number) + "+"
+        sum+= int(number)
+        result=result + " = "+ sum
+        print(result)
+        
+sumforN(10)
