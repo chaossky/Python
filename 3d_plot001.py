@@ -9,7 +9,7 @@ import numpy as np
 plt.style.use('_mpl-gallery')
 
 # Make data
-x = [1, 1, 2, 2]
+x = [1, 1, 2, 3]
 y = [1, 2, 1, 2]
 z = [0, 0, 0, 0]
 # Define the width, depth, and height of the bars
