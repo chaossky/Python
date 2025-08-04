@@ -1,5 +1,4 @@
 #selection sort 
-    
 
 def selection_sort(arr):
     """
@@ -22,7 +21,7 @@ def selection_sort(arr):
         arr[i], arr[min_index] = arr[min_index], arr[i]
     return arr
 
-heights = [150,145,161,170,154,159,166,168,180,190]
+heights = [151,145,161,170,154,159,166,168,180,190]
 
 order_heights = selection_sort(heights)
 

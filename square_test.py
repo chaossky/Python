@@ -18,13 +18,6 @@ while True:
     clock.tick(30)
     screen.fill(color)
     pg.display.update()
-    if count>1000:
-        
+    if count>1000:        
         break
-    
 pg.quit()
-
-
-
-
-    
