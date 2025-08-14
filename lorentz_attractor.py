@@ -16,7 +16,7 @@ def lorenz(t, state):
     return [dx, dy, dz]
 
 # Generate Lorenz data using scipy's solve_ivp
-def generate_lorenz_data(start_point, t_max=40, dt=0.01):
+def generate_lorenz_data(start_point, t_max=60, dt=0.011):
     t_span = (0, t_max)
     t_eval = np.arange(0, t_max, dt)
     sol = solve_ivp(lorenz, t_span, start_point, t_eval=t_eval, method="RK45")
@@ -30,7 +30,7 @@ class LorenzAttractor3D(ThreeDScene):
         axes = ThreeDAxes(
             x_range=[-30, 30, 10],
             y_range=[-30, 30, 10],
-            z_range=[0, 60, 10],
+            z_range=[0, 70, 10],
             x_length=10,
             y_length=10,
             z_length=6,
