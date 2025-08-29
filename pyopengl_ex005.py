@@ -118,9 +118,6 @@ def key_callback(window, key, scancode, action, mods):
 
 # 셰이더 프로그램 생성 함수
 
-
-
-
 def create_shader_program():
     return compileProgram(
         compileShader(VERTEX_SHADER, GL_VERTEX_SHADER),
