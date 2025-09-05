@@ -1,5 +1,3 @@
-
-
 import time
 
 nums = list(range(10_000_000))

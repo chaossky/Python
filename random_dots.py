@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-seed=90000
+seed=900
 x=np.random.rand(seed)
 y=np.random.rand(seed)
 colors=np.random.rand(seed)
