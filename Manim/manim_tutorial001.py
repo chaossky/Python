@@ -4,7 +4,7 @@ class NameOfAnimation(Scene):
     def construct(self):
         
         box=Rectangle(
-            width=1,
+            width=2,
             height=1,
             fill_color=RED_B,
             fill_opacity=0.5,
