@@ -7,7 +7,7 @@ inp = Image.open('linda.jpg')
 print("Removing background...")
 output = remove(inp)
 
-print("Saving output...")
+print("Saving output...")   
 output.save('output_linda.png')
 
 print("Done!")
