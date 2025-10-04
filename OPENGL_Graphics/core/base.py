@@ -51,8 +51,8 @@ class Base(object):
             if self.input.quit:
                 self.running=False
             # seconds sing iteration of run loop
-            self.deltatime=self.clock.get_time()/1000.0
-            self.time+=self.deltatime
+            self.deltaTime=self.clock.get_time()/1000.0
+            self.time+=self.deltaTime
             
             ## update ##
             self.update()

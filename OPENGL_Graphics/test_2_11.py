@@ -3,8 +3,6 @@ from core.openGLUtils import OpenGLUtils
 from core.attribute import Attribute
 from core.uniform import Uniform    
 from OpenGL.GL import *
-from math import sin,cos
-
 
 # animate triangle moving across screen
 class Test(Base):   
@@ -51,6 +49,9 @@ class Test(Base):
         self.baseColor=Uniform("vec3",[1.0,0.0,0.0])
         self.baseColor.locateVariable(self.programRef,"baseColor")
         
+        # triangle speed,units per second
+        self.speed=0.9
+        
     def update(self):
         ### update data ###
         
@@ -61,13 +62,16 @@ class Test(Base):
         # if self.translation.data[0]>1.2:
         #     self.translation.data[0]=-1.2
         
-        self.translation.data[0]=0.75*cos(self.time)
-        self.translation.data[1]=0.75*sin(self.time)
-        
-        self.baseColor.data[0]=(sin(0.3*(self.time))+1)/2
-        self.baseColor.data[1]=(sin(0.4*(self.time+2.1))+1)/2
-        self.baseColor.data[2]=(sin(0.5*(self.time+4.2))+1)/2
-        
+        distance=self.speed*self.deltaTime
+        if self.input.isKeyPressed("left"):
+            self.translation.data[0]-=distance
+        if self.input.isKeyPressed("right"):
+            self.translation.data[0]+=distance
+        if self.input.isKeyPressed("up"):
+            self.translation.data[1]+=distance
+        if self.input.isKeyPressed("down"):
+            self.translation.data[1]-=distance
+                    
         ### render scene ###
         ### reset color buffer with specified color
         glClear(GL_COLOR_BUFFER_BIT)
