@@ -42,7 +42,7 @@ class Object3D(object):
     # apply geometric transformations
     def applyMatrix(self,matrix,localCoord=True):
         if localCoord:
-            self.transfrom=self.transfrom@matrix
+            self.transform=self.transform@matrix
         else:
             self.transform=matrix@self.transform
             
@@ -79,16 +79,11 @@ class Object3D(object):
                 worldTransform.item((2,3))]
         
     def setPosition(self,position):
-        self.transform.itemset((0,3),position[0])
-        self.transform.itemset((1,3),position[1])
-        self.transform.itemset((2,3),position[2])
-            
-
-
-              
-    
-    
-    
-            
-        
-      
+        # `itemset` was removed from the ndarray class in NumPy 2.0. 
+        #   Use `arr[index] = value` instead.
+        # self.transform.itemset((0,3),position[0])
+        # self.transform.itemset((1,3),position[1])
+        # self.transform.itemset((2,3),position[2])
+        self.transform[0,3]=position[0]
+        self.transform[1,3]=position[1]
+        self.transform[2,3]=position[2] 

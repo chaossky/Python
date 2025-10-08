@@ -12,10 +12,11 @@ class BasicMaterial(Material):
         in vec3 vertexColor;
         out vec3 color;
         
-        void main(){
+        void main()
+        {
             gl_Position=projectionMatrix*viewMatrix*modelMatrix*vec4(vertexPosition,1.0);
-            color=vertexColor
-            }
+            color=vertexColor;
+        }
         """
         
         fragmentShaderCode="""

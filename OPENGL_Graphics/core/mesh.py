@@ -6,7 +6,7 @@ class Mesh(Object3D):
     def __init__(self,geometry,material):
         super().__init__()
         
-        self.geomtry=geometry
+        self.geometry=geometry
         self.material=material
         
         # should this object be rendered?

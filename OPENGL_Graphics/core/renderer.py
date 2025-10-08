@@ -1,7 +1,6 @@
 from OpenGL.GL import *
 from core.mesh import Mesh
 
-
 class Renderer(object):
     
     def __init__(self,clearColor=[0,0,0]):
