@@ -42,7 +42,6 @@ class Input(object):
                 self.keyPressedList.remove(keyName)
                 self.keyUpList.append(keyName)
               
-                
         # quit event occurs by clicking button to close window
         
         # reset some of the input properties

@@ -1,7 +1,4 @@
 from OpenGL.GL import *
-# from OpenGL.GLU import *
-# from OpenGL.GLUT import *
-# import sys
 
 # static methods to load and compile OpenGL shaders and link to create programs
 class OpenGLUtils(object):

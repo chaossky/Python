@@ -42,9 +42,9 @@ class Object3D(object):
     # apply geometric transformations
     def applyMatrix(self,matrix,localCoord=True):
         if localCoord:
-            self.transform=self.transform@matrix
+            self.transform=self.transform @ matrix
         else:
-            self.transform=matrix@self.transform
+            self.transform=matrix @ self.transform
             
     def translate(self,x,y,z,localCoord=True):
         m=Matrix.makeTranslation(x,y,z)

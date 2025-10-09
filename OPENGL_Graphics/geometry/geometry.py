@@ -45,7 +45,7 @@ class Geometry(object):
         self.attributes[variableName].uploadData()
         
         # merge data from attributes of other geometry into this object;
-        # requires both geometries to have attributes with same names
+        #   requires both geometries to have attributes with same names
         
         def merge(self,otherGeometry):
             for variableName,attributeObject in self.attributes.items():

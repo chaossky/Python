@@ -19,7 +19,7 @@ class Base(object):
         # create and display the window
         self.screen=pygame.display.set_mode(screenSize, displayFlags)
         # set the text that appears in the title bar of the window
-        pygame.display.set_caption("Graphics Window")
+        pygame.display.set_caption("My OpenGL Window")
         
         # determine if main loop is active
         self.running=True
@@ -29,7 +29,6 @@ class Base(object):
         self.input=Input()
         # number of seconds application has been running
         self.time=0
-        
         
     # implement by extending class
     def initialize(self): 

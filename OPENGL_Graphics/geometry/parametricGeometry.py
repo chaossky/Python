@@ -2,6 +2,7 @@ from geometry.geometry import Geometry
 
 class ParametricGeometry(Geometry):
     def __init__(self,uStart,uEnd,uResolution,vStart,vEnd,vResolution,surfaceFunction):
+        super().__init__()
         
         # generate set of points on function
         deltaU=(uEnd-uStart)/uResolution
@@ -25,7 +26,7 @@ class ParametricGeometry(Geometry):
         C4,C5,C6=[0,1,1],[1,0,1],[1,1,0]
         
         # group vertex data into triangle
-        # note : .copy() is necessary to avoid storing references
+        #   note : .copy() is necessary to avoid storing references
         for xIndex in range(uResolution):
             for yIndex in range(vResolution):
                 # position data
