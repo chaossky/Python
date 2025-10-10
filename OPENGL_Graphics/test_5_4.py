@@ -5,7 +5,11 @@ from core.camera import Camera
 from core.texture import Texture
 from core.mesh import Mesh
 from geometry.rectangleGeometry import RectangleGeometry
+from material.surfaceMaterial import SurfaceMaterial
+from geometry.sphereGeometry import SphereGeometry
+from material.textureMaterial import TextureMaterial
 from material.material import Material
+
 
 # render a basic scene
 class Test(Base):
@@ -29,51 +33,37 @@ class Test(Base):
         
         void main()
         {
-            vec4 pos=vec4(vertexPosition,1.0);
-            gl_Position=projectionMatrix*viewMatrix*modelMatrix*pos;
+            gl_Position=projectionMatrix*viewMatrix*modelMatrix*vec4(vertexPosition,1.0);
             UV=vertexUV;
         }
         """
         
         fragmentShaderCode="""
-        // return a random value in [0,1]
-        float random(vec2 UV)
-        {
-            //return fract(sin(dot(uv.xy,vec2(12.9898,78.233)))*43758.5453);
-            return fract(235711.0*sin(14.337*UV.x+ 42.418*UV.y));
-        }
-
-         float boxRandom(vec2 UV,float scale)
-        {
-            vec2 iScaleUV=floor(UV*scale);
-            return random(iScaleUV);
-        }
-        
-        float smoothRandom(vec2 UV,float scale)
-        {
-            vec2 iScaleUV=floor(scale*UV);
-            vec3 fScaleUV=fract(scale*UV);
-            float a=random(iScaleUV);
-            float b=random(round(iScaleUV+vec2(1,0)));
-            float c=random(round(iScaleUV+vec2(0,1)));
-            float d=random(round(iScaleUV+vec2(1,1)));
-            return mix(mix(a,b,fScaleUV.x),mix(c,d,fScaleUV.x),fScaleUV.y);
-        }        
+        uniform sampler2D texture1;
+        uniform sampler2D texture2;
         in vec2 UV;
+        uniform float time;
         out vec4 fragColor;
         
         void main()
         {
-            float r=boxRandom(UV,6);
-            //float r=smoothRandom(UV,6);
-            fragColor=vec4(r,r,r,1);
+            vec4 color1=texture2D(texture1,UV);
+            vec4 color2=texture2D(texture2,UV);
+            float s=abs(sin(time));
+            fragColor=s*color1+(1.0-s)*color2;
         }
         """
-        material=Material(vertexShaderCode,fragmentShaderCode)
-        material.locateUniforms()
+        gridTex=Texture("images/grid.png")
+        crateTex=Texture("images/crate.jpg")
+        self.blendMaterial=Material(vertexShaderCode,fragmentShaderCode)
+        self.blendMaterial.addUniform("sampler2D","texture1",[gridTex.textureRef,1])
+        self.blendMaterial.addUniform("sampler2D","texture2",[crateTex.textureRef,2])
+        self.blendMaterial.addUniform("float","time",0.0)
+        self.blendMaterial.locateUniforms()
         
+        #geometry=SphereGeometry(radius=0.5)
         geometry=RectangleGeometry()
-        self.mesh=Mesh(geometry,material)
+        self.mesh=Mesh(geometry,self.blendMaterial)
         self.scene.add(self.mesh)
         
     def update(self):
@@ -81,6 +71,7 @@ class Test(Base):
         # self.mesh.rotateX(0.0337)
         # self.mesh.rotateZ(0.006)
         self.renderer.render(self.scene,self.camera)
+        self.blendMaterial.uniforms["time"].data+=self.deltaTime
         
 # instantiate this class and run the program
 if __name__ == "__main__":

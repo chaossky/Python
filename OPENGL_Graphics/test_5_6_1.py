@@ -17,7 +17,7 @@ class Test(Base):
         self.scene=Scene()
         self.camera=Camera(aspectRatio=800/600)
         # 카메라의 포지션은 나오는 이미지에 따라서 조절해야 할 것이다.
-        self.camera.setPosition([0,0,1.5])
+        self.camera.setPosition([0,0,0.5])
         
         vertexShaderCode="""
         uniform mat4 projectionMatrix;
@@ -49,24 +49,46 @@ class Test(Base):
             return random(iScaleUV);
         }
         
-        float smoothRandom(vec2 UV,float scale)
+        float smoothRandom(vec2 UV, float scale)
         {
-            vec2 iScaleUV=floor(scale*UV);
-            vec3 fScaleUV=fract(scale*UV);
-            float a=random(iScaleUV);
-            float b=random(round(iScaleUV+vec2(1,0)));
-            float c=random(round(iScaleUV+vec2(0,1)));
-            float d=random(round(iScaleUV+vec2(1,1)));
-            return mix(mix(a,b,fScaleUV.x),mix(c,d,fScaleUV.x),fScaleUV.y);
-        }        
+            vec2 iScaleUV = floor(scale * UV);
+            vec2 fScaleUV = fract(scale * UV);  // 수정된 부분
+            float a = random(iScaleUV);
+            float b = random(round(iScaleUV + vec2(1, 0)));
+            float c = random(round(iScaleUV + vec2(0, 1)));
+            float d = random(round(iScaleUV + vec2(1, 1)));
+            return mix(mix(a, b, fScaleUV.x), mix(c, d, fScaleUV.x), fScaleUV.y);
+        }
+        
+        // add smooth random values at different scales 
+        // weighted (amplitudes) so that sum is approximately 1.0
+        float fractalRandom(vec2 UV, float scale)
+        {
+            float value=0.0;
+            float amplitude=0.5;
+            
+            for (int i=0;i<6;i++)
+            {
+                value+=amplitude*smoothRandom(UV,scale);
+                scale*=2.0;
+                amplitude*=0.35;
+            }
+            return value;
+        }
+        
         in vec2 UV;
         out vec4 fragColor;
         
         void main()
         {
-            float r=boxRandom(UV,6);
-            //float r=smoothRandom(UV,6);
-            fragColor=vec4(r,r,r,1);
+            //float r=boxRandom(UV,10);
+            //float r=smoothRandom(UV,);
+            float t=fractalRandom(UV,4);
+            float r=abs(sin(20*t));
+            vec4 color1=vec4(0,0.2,0,1);
+            vec4 color2=vec4(1,1,1,1);
+            
+            fragColor=mix(color1,color2,r);
         }
         """
         material=Material(vertexShaderCode,fragmentShaderCode)

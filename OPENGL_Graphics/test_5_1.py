@@ -4,7 +4,7 @@ from core.scene import Scene
 from core.camera import Camera
 from core.texture import Texture
 from core.mesh import Mesh
-from geometry.boxGeometry import BoxGeometry
+from geometry.rectangleGeometry import RectangleGeometry
 from material.surfaceMaterial import SurfaceMaterial
 from material.textureMaterial import TextureMaterial
 
@@ -18,15 +18,12 @@ class Test(Base):
         self.scene=Scene()
         self.camera=Camera(aspectRatio=800/600)
         # 카메라의 포지션은 나오는 이미지에 따라서 조절해야 할 것이다.
-        self.camera.setPosition([0,0,2.00])
+        self.camera.setPosition([0,0,1])
         
-        geometry=BoxGeometry()
-        material=SurfaceMaterial({"useVertexColors":True})
-        # material=SurfaceMaterial({
-        #     "useVertexColors":True,
-        #     "wireframe":True,
-        #     "lineWidth":8
-        # })
+        geometry=RectangleGeometry()
+        grid=Texture("images/grid.png")
+        material=TextureMaterial(grid)
+        
         self.mesh=Mesh(geometry,material)
         self.scene.add(self.mesh)
         

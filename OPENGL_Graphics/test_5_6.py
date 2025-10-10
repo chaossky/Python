@@ -42,31 +42,14 @@ class Test(Base):
             //return fract(sin(dot(uv.xy,vec2(12.9898,78.233)))*43758.5453);
             return fract(235711.0*sin(14.337*UV.x+ 42.418*UV.y));
         }
-
-         float boxRandom(vec2 UV,float scale)
-        {
-            vec2 iScaleUV=floor(UV*scale);
-            return random(iScaleUV);
-        }
         
-        float smoothRandom(vec2 UV,float scale)
-        {
-            vec2 iScaleUV=floor(scale*UV);
-            vec3 fScaleUV=fract(scale*UV);
-            float a=random(iScaleUV);
-            float b=random(round(iScaleUV+vec2(1,0)));
-            float c=random(round(iScaleUV+vec2(0,1)));
-            float d=random(round(iScaleUV+vec2(1,1)));
-            return mix(mix(a,b,fScaleUV.x),mix(c,d,fScaleUV.x),fScaleUV.y);
-        }        
         in vec2 UV;
         out vec4 fragColor;
         
         void main()
         {
-            float r=boxRandom(UV,6);
-            //float r=smoothRandom(UV,6);
-            fragColor=vec4(r,r,r,1);
+            float r=random(UV);
+            fragColor=vec4(r,r,r,1.0);
         }
         """
         material=Material(vertexShaderCode,fragmentShaderCode)

@@ -18,3 +18,8 @@ class RectangleGeometry(Geometry):
         self.addAttribute("vec3","vertexPosition",positionData)
         self.addAttribute("vec3","vertexColor",colorData)
         self.countVertices()
+        
+        # texture coordinates
+        T0,T1,T2,T3 = [0,0], [1,0], [0,1], [1,1]
+        uvData = [T0,T1,T3, T0,T3,T2]
+        self.addAttribute("vec2","vertexUV",uvData)
