@@ -1,4 +1,3 @@
-Manim/__pycache__/manim_tutorial001.cpython-313.pyc
 Manim/media/Tex/
 Manim/media/images/
 Manim/media/texts/
@@ -7,6 +6,7 @@ Manim/media/videos/test001/
 Manim/media/videos/test002/
 Manim/media/videos/test003/
 Manim/media/videos/test004/
+
 Quote_image/.gitignore
 Quote_image/.python-version
 Quote_image/README.md
@@ -15,17 +15,27 @@ Quote_image/quote_malangmalang.png
 Quote_image/quotes.txt
 Quote_image/quotes_images/
 Quote_image/uv.lock
+
 font_list/.python-version
 font_list/README.md
 font_list/font_list.txt
 font_list/pyproject.toml
 font_list/uv.lock
-Manim/__pycache__/manim_tutorial001.cpython-313.pyc
-Manim/__pycache__/test001.cpython-313.pyc
-Manim/__pycache__/test002.cpython-313.pyc
-Manim/__pycache__/test003.cpython-313.pyc
-Manim/__pycache__/test004.cpython-313.pyc
-Manim/__pycache__/test005.cpython-313.pyc
+
+# VSCode settings
+# IDE 및 에디터 설정 폴더 무시
+.vscode/
+.idea/
+.dist/
+
+# Python 캐시 폴더 및 파일 무시
+__pycache__/
+*.pyc
+**/__pycache__/
+**/*.pyc
+
+
+
 TK_Countdown.spec
 build/
 dist/
