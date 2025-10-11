@@ -1,5 +1,7 @@
 import numpy
 from math import sin,cos,tan,pi
+from numpy import subtract,divide,cross
+from numpy.linalg import norm
 
 class Matrix(object):
     
@@ -62,3 +64,32 @@ class Matrix(object):
                             ,[0,d,0,0]
                             ,[0,0,b,c]
                             ,[0,0,-1,0]]).astype(float)
+    
+    @staticmethod
+    def makeLookAt(position,target):
+        worldUp=[0,1,0]
+        forward=subtract(target,position)
+        right=cross(forward,worldUp)
+        up=cross(right,forward)
+        
+        # if forward and worldUp vectors are parallel,
+        # right vector is zero;
+        # fix by perturbing worldUp vector a bit
+        if norm(right)<0.001:
+            offset=numpy.array([0.001,0,0])
+            right=cross(forward,worldUp+offset)
+            
+        up=cross(right,forward)
+        
+        #all vectors should have length 1
+        forward=divide(forward,norm(forward))
+        right=divide(right,norm(right))
+        up=divide(up,norm(up))
+        
+        return numpy.array([
+            [right[0],up[0],-forward[0],position[0]],
+            [right[1],up[1],-forward[1],position[1]],
+            [right[2],up[2],-forward[2],position[2]],
+            [0,0,0,1]])
+                           
+                           
