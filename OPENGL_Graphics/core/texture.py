@@ -4,7 +4,7 @@ from OpenGL.GL import *
 class Texture(object):
 
     def __init__(self,fileName=None, properties={}):
-        #super().__init__()
+        super().__init__()
         
         # pygame object for storing pixel data;
         #   can load from image or manipulate directly
