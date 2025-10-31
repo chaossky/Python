@@ -49,10 +49,29 @@ class Grid:
         if not breaker:
             current_x-=1
                          
-        if self.try_move(current_x-1,current_y):
-            self.clear_grid()
-            
+        #if self.try_move(current_x-1,current_y):
+        #self.clear_grid()
         
+    def move_right(self)->None:
+        """ Move the active letter right. """
+        global current_x
+        breaker=False
+        for x in range(GRID_WIDTH-1,-1,-1):
+            if breaker:
+                break
+            for y in range(GRID_HEIGHT):
+                if self.get_cell(x,y)==1:
+                    if self.try_move(x+1,y):
+                        self.set_cell(x,y,0)
+                        self.set_cell(x+1,y,1)
+                    else:
+                        breaker=True
+                        break
+        if not breaker:
+            current_x+=1
+                         
+        #if self.try_move(current_x-1,current_y):
+        #self.clear_grid()    
         
     def draw_all(self)->None:
         self.draw_walls()
@@ -148,6 +167,8 @@ if __name__=="__main__":
     pprint(g.main_grid)
     
     
-# 34:35
+# 49:57 -https://www.youtube.com/watch?v=zeVVQ2Gigo8&t=2075s
+
+
  
  

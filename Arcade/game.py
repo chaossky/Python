@@ -14,6 +14,12 @@ class GameView(arcade.View):
             self.grid.rotate_letter()
         elif symbol==arcade.key.LEFT:
             self.grid.move_left()
+        elif symbol==arcade.key.RIGHT:
+            self.grid.move_right()
+        # elif symbol==arcade.key.DOWN:
+        #     self.grid.move_down()
+        # elif symbol==arcade.key.SPACE:
+        #     self.grid.drop_letter()     
             
     def on_draw(self):
         self.clear()
@@ -22,3 +28,5 @@ class GameView(arcade.View):
 game=GameView()
 window.show_view(game)
 arcade.run()
+
+# https://youtu.be/zeVVQ2Gigo8?si=Tm5EURty127joW5_
