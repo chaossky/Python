@@ -32,5 +32,5 @@ ax.set(xticklabels=[],
        zticklabels=[])
 
 # Show the plot
-plt.tight_layout()   
+# plt.tight_layout()   
 plt.show()

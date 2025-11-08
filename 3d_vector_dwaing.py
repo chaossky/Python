@@ -1,6 +1,9 @@
+import matplotlib
+matplotlib.use('TkAgg')  # 또는 'Qt5Agg', 'GTK3Agg' 등
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 import numpy as np
+
 
 # Create a new figure
 fig = plt.figure()
