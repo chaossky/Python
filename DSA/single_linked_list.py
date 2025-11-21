@@ -32,7 +32,7 @@ class SLinkedList:
             print("저장된 데이타가 없습니다.")
             return
         else:
-            print("<현재 리스트 구조>",end='\t')
+            print("<현재 전체 노드 구조>",end='\t')
             link=self.head #처음은 head를 지정, 이후 부터 현 node의 next를 지정
             # link가 가리키는 node가 없을때 까지 반복
             # None, 0,"" 는 조건 판단에서 False처리, 그외는 True로 처리
@@ -80,7 +80,7 @@ if __name__=="__main__":
     sl.insertNode('1st')
     sl.insertNode('2nd')
     sl.insertNode('3rd')
-    # sl.printNode()  # 출력
+    sl.printNode()  # 출력
     # sl.deleteNode()
     # sl.deleteNode()
     # sl.printNode()  # 출력
@@ -89,9 +89,9 @@ if __name__=="__main__":
     # sl.printNode()  # 출력
    
     #탐색
-    print("<위치 탐색>")
-    result = sl.searchNode('1st')
-    print("1st의 위치 : {}".format(result))
+    # print("<위치 탐색>")
+    # result = sl.searchNode('1st')
+    # print("1st의 위치 : {}".format(result))
 
-    result = sl.searchNode('555')
-    print("555의 위치 : {}".format(result))
+    # result = sl.searchNode('555')
+    # print("555의 위치 : {}".format(result))
