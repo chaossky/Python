@@ -40,9 +40,9 @@ HEADER_COLOR = "D9D9D9"    # 회색 헤더
 thin = Side(style="thin", color="999999")
 border = Border(left=thin, right=thin, top=thin, bottom=thin)
 
-title_font = Font(size=16, bold=True)
+title_font = Font(size=11, bold=True)
 weekday_font = Font(size=11, bold=True)
-day_font = Font(size=20,bold=True)
+day_font = Font(size=16,bold=True)
 holiday_font = Font(color="9C0006", bold=True)  # 진한 빨강
 
 center = Alignment(horizontal="center", vertical="center", wrap_text=True)
