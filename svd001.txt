@@ -1,0 +1,9 @@
+from sympy import Matrix, symbols, solve, latex, eye
+from IPython.display import display, Math
+λ = symbols('λ') 
+mat_A=Matrix([[1,1,0],[0,1,1]])
+mat_A_inv=mat_A.T
+sik1=mat_A-λ*mat_I
+sik2=sik1.det()
+roots=solve(sik2,λ)
+display(Math(" , ".join([latex(r) for r in roots])))

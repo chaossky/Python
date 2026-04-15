@@ -6,6 +6,7 @@ Manim/media/videos/test001/
 Manim/media/videos/test002/
 Manim/media/videos/test003/
 Manim/media/videos/test004/
+Manim/my-project/media/
 
 Quote_image/.gitignore
 Quote_image/.python-version
@@ -33,10 +34,11 @@ __pycache__/
 *.pyc
 **/__pycache__/
 **/*.pyc
-
-
-
 TK_Countdown.spec
 build/
 dist/
 .gitignore.bak
+사순절쓰기제출자.txt
+사순절쓰기.txt
+Manim/my-project/media/videos/main/480p15/CreateCircle.mp4
+simul.txt
